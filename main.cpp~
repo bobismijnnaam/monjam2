@@ -1,0 +1,14 @@
+#include "pngpp/png.hpp"
+#include "JPEGReaderWriter-1.0.1/JPEGReader.h"
+#include "JPEGReaderWriter-1.0.1/JPEGWriter.h"
+#include "images.hpp"
+#include <iostream>
+
+int main() {
+	mj2::JPG in("cpp.jpg");
+	mj2::PNG out(in.getWidth(), in.getHeight());
+	out.pasteImage(in, 0, 0);
+	out.saveAsPng("test.png");
+
+	return 0;
+}
