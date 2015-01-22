@@ -1,6 +1,6 @@
 # Maek
 
-FLAGS = -lpng -ljpeg -lz -I ./JPEGReaderWriter-1.0.1 -I ./pngpp -std=c++11 -g
+FLAGS = -lpng -ljpeg -lz -lpthread -lmingw32 -I JPEGReaderWriter-1.0.1 -I pngpp -I mingw-std-threads -std=c++11 -g
 
 SOURCES = $(wildcard *.cpp) $(wildcard ./JPEGReaderWriter-1.0.1/*.cpp)
 OBJECTS = $(SOURCES:.cpp=.o)
@@ -8,7 +8,7 @@ OBJECTS = $(SOURCES:.cpp=.o)
 all: monjam
 
 monjam: $(OBJECTS)
-	g++ $(OBJECTS) $(FLAGS) -o monjam 
+	g++ $(OBJECTS) $(FLAGS) -o monjam2
 
 %.o: %.cpp
 	g++ -c $(FLAGS) $< -o $@ 

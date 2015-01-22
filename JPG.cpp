@@ -21,7 +21,7 @@ mj2::JPG::~JPG() {
 	rows = nullptr;
 }
 
-mj2::Color mj2::JPG::getColor(int x, int y) {
+mj2::Color mj2::JPG::getColor(int x, int y) const {
 	std::vector<unsigned char> const & map = img.colormap();
 	mj2::Color clr;
 	int pos = (y * img.width() + x) * 3;
@@ -34,10 +34,10 @@ mj2::Color mj2::JPG::getColor(int x, int y) {
 	return clr;
 }
 
-int mj2::JPG::getWidth() {
+int mj2::JPG::getWidth() const {
 	return img.width();
 }
 
-int mj2::JPG::getHeight() {
+int mj2::JPG::getHeight() const {
 	return img.height();
 }

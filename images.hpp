@@ -1,3 +1,6 @@
+#ifndef IMAGES_HPP
+#define IMAGES_HPP
+
 #include "pngpp/png.hpp"
 #include "JPEGReaderWriter-1.0.1/JPEGReader.h"
 #include "JPEGReaderWriter-1.0.1/JPEGWriter.h"
@@ -20,10 +23,10 @@ namespace mj2 {
 		JPG(JPG &&) = default;
 		JPG & operator=(JPG &&) = default; 	
 
-		Color getColor(int x, int y);
+		Color getColor(int x, int y) const;
 	
-		int getWidth();
-		int getHeight();
+		int getWidth() const;
+		int getHeight() const;
 
 		JPEGReader img;
 		unsigned char **rows;
@@ -35,15 +38,19 @@ namespace mj2 {
 		PNG(size_t w, size_t h);
 
 		void setColor(size_t x, size_t y, Color clr);
-		Color getColor(size_t x, size_t y);
-		void pasteImage(PNG& other, int x, int y);
-		void pasteImage(JPG& other, int x, int y);
-		int getWidth();
-		int getHeight();
+		Color getColor(size_t x, size_t y) const;
+		void pasteImage(PNG const & other, int x, int y);
+		void pasteImage(JPG const & other, int x, int y);
+		int getWidth() const;
+		int getHeight() const;
 
-		void saveAsPng(std::string path);
+		PNG scale(int newWidth, int newHeight);
 
-		png::image<png::rgba_pixel> img;
+		void saveAsPng(std::string path) const;
+
+		mutable png::image<png::rgba_pixel> img;
 	} ;
 
 }
+
+#endif
